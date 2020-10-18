@@ -1,0 +1,11 @@
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+setopt appendhistory autocd notify
+unsetopt beep
+bindkey -v
+
+autoload -Uz compinit promptinit
+compinit
+prompt pure
