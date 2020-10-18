@@ -11,6 +11,8 @@
         gist
         neovim
         lf
+        git
+        gitfs
 
         # compression
         zip
