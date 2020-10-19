@@ -45,7 +45,7 @@
 
     nixpkgs.config.allowUnfree = true;
     i18n.defaultLocale = "en_US.UTF-8";
-    timezone = "Europe/Berlin";
+    time.timeZone = "Europe/Berlin";
 
     programs = {
         tmux.enable = true;
@@ -55,10 +55,8 @@
             autosuggestions.enable = true;
             syntaxHighlighting.enable = true;
         };
-        fzf.enable = true;
     };
 
-    users.mutableUsers = false;
     users.users.hendrik = {
         isNormalUser = true;
         extraGroups = [ "wheel" "sudo" "audio" "disk" "networkmanager" ];
@@ -67,23 +65,6 @@
 
     services = {
         fail2ban.enable = true;
-        timers = {
-            syncmail = {
-                Unit.Description = "Schedule syncing email and indexing with mu";
-                Timer = {
-                    Unit = "syncmail.service";
-                    OnCalendar = "*:0/5";
-                };
-                Install.WantedBy = [ "timers.target" ];
-            };
-            cleanmail = {
-                Unit.Description = "Schedule expunging email and indexing with mu";
-                Timer = {
-                    Unit = "cleanmail.service";
-                    OnCalendar = "daily";
-                }
-                Install.WantedBy = [ "timers.target" ];
-            };
-        };
+        openssh.enable = true;
     };
 }

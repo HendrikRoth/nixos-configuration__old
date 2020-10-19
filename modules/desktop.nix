@@ -64,6 +64,6 @@
         enable = true;
         layout = "eu";
         xkbOptions = "caps:swapescape";
-        displayManager.slim.enable = true;
+        displayManager.lightdm.enable = true;
     };
 }

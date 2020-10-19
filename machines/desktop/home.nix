@@ -3,7 +3,7 @@
 let
     # personal information
     name = "Hendrik Roth";
-    mail = "hi@hendrikroth.com";
+    email = "hi@hendrikroth.com";
     username = "hendrik";
     githubUsername = "HendrikRoth";
 
@@ -15,51 +15,6 @@ let
 
 in
 {
-    imports = [
-        ../../modules/neovim.nix
-    ];
-
-    home = {
-        file.".zshrc".source = ../../dotfiles/zsh/zshrc
-        username = "${username}";
-        homeDirectory = "${homedir}";
-        stateVersion = "20.09"
-        sessionVariables = {
-            EDITOR = "nvim";
-            MUSICCLIENT = "spotify-tui";
-            MEDIACLIENT = "mpc";
-            BROWSER = "firefox";
-        };
-    };
-
-    accounts.email = {
-        mailDirPath = "${homedir}${maildir}";
-        accounts = {
-            gmail = {
-                address = "mail@henn1nk.com";
-                userName = "mail@henn1nk.com";
-                flavor = "gmail";
-                mbsync = {
-                    enable = true;
-                    expunge = "both";
-                    patterns = [ "*" "[!Gmail]*" "[Gmail/Sent Mail]" ];
-                };
-                realName = "${name}";
-            };
-            main = {
-                address = "${email}";
-                userName = "";
-                flavor = "imap";
-                mbsync = {
-                    enable = true;
-                    expunge = "both";
-                    patterns = [ ];
-                };
-                realName = "${email}";
-            };
-        };
-    };
-
     programs = {
         home-manager = {
             enable = true;
@@ -70,11 +25,57 @@ in
         };
     };
 
+    home = {
+        file.".zshrc".source = ../../dotfiles/zsh/zshrc;
+        username = "${username}";
+        homeDirectory = "${homedir}";
+        stateVersion = "20.09";
+        sessionVariables = {
+            EDITOR = "nvim";
+            MUSICCLIENT = "spotify-tui";
+            MEDIACLIENT = "mpc";
+            BROWSER = "firefox";
+        };
+    };
+
+    imports = [
+        ../../modules/neovim.nix
+    ];
+
+    #accounts.email = {
+    #    mailDirPath = "${homedir}${maildir}";
+    #    accounts = {
+    #        gmail = {
+    #            address = "mail@henn1nk.com";
+    #		 userName = "mail@henn1nk.com";
+    #            flavor = "gmail";
+    #            mbsync = {
+    #                enable = true;
+    #                expunge = "both";
+    #                patterns = [ "*" "[!Gmail]*" "[Gmail/Sent Mail]" ];
+    #            };
+    #            realName = "${name}";
+    #        };
+    #        main = {
+    #            address = "${email}";
+    #            userName = "";
+    #            flavor = "imap";
+    #            mbsync = {
+    # 	 	     enable = true;
+    #                expunge = "both";
+    #                patterns = [ ];
+    #            };
+    #            realName = "${email}";
+    #        };
+    #    };
+    #};
+
     xdg = {
         enable = true;
         configFile = {
             "feh/keys".source = ../../dotfiles/feh/keys;
             "picom.conf".source = ../../dotfiles/picom.conf;
+	    "sxhkd/sxhkdrc".source = ../../dotfiles/sxhkdrc/sxhkdrc;
 
             "bspwm/bspwmrc".source = ./dotfiles/bspwmrc;
             "khal/config".source = ./dotfiles/khal;
