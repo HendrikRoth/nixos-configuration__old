@@ -25,7 +25,7 @@
         vdirsyncer
 
         # secrets
-        keepass
+        pass
 
         # compression
         zip
