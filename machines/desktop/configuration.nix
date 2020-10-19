@@ -20,6 +20,7 @@
     };
 
     services.openssh.enable = true;
+    services.xserver.videoDrivers = [ "amdgpu" ];
 
     system = {
         stateVersion = "20.09";

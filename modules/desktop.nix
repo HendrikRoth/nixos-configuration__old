@@ -22,6 +22,7 @@
         mpv
         spotify-tui
         playerctl
+        ncpamixer
 
         # terminal
         kitty
@@ -63,7 +64,7 @@
     services.xserver = {
         enable = true;
         layout = "eu";
-        xkbOptions = "caps:swapescape";
+        xkbOptions = "caps:escape";
         displayManager.lightdm.enable = true;
     };
 }

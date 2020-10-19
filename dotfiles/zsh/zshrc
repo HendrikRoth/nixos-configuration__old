@@ -10,4 +10,8 @@ autoload -Uz compinit promptinit
 compinit
 prompt pure
 
-source ./plugins/extract.plugin.zsh
+#source ./plugins/extract.plugin.zsh
+
+alias vf="vim $(fzf)"
+alias v="vim"
+alias c="clear"

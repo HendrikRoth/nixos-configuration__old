@@ -16,6 +16,7 @@
         lf
         git
         gitfs
+        w3m
 
         # mail
         neomutt
@@ -43,6 +44,8 @@
         corefonts
     ];
 
+    hardware.bluetooth.enable = true;
+
     nixpkgs.config.allowUnfree = true;
     i18n.defaultLocale = "en_US.UTF-8";
     time.timeZone = "Europe/Berlin";
@@ -66,5 +69,6 @@
     services = {
         fail2ban.enable = true;
         openssh.enable = true;
+        blueman.enable = true;
     };
 }

@@ -42,40 +42,39 @@ in
         ../../modules/neovim.nix
     ];
 
-    #accounts.email = {
-    #    mailDirPath = "${homedir}${maildir}";
-    #    accounts = {
-    #        gmail = {
-    #            address = "mail@henn1nk.com";
-    #		 userName = "mail@henn1nk.com";
-    #            flavor = "gmail";
-    #            mbsync = {
-    #                enable = true;
-    #                expunge = "both";
-    #                patterns = [ "*" "[!Gmail]*" "[Gmail/Sent Mail]" ];
-    #            };
-    #            realName = "${name}";
-    #        };
-    #        main = {
-    #            address = "${email}";
-    #            userName = "";
-    #            flavor = "imap";
-    #            mbsync = {
-    # 	 	     enable = true;
-    #                expunge = "both";
-    #                patterns = [ ];
-    #            };
-    #            realName = "${email}";
-    #        };
-    #    };
-    #};
+#    accounts.email = {
+#        mailDirPath = "${homedir}${maildir}";
+#        accounts = {
+#            gmail = {
+#                address = "mail@henn1nk.com";
+#    		 userName = "mail@henn1nk.com";
+#                flavor = "gmail";
+#                mbsync = {
+#                    enable = true;
+#                    expunge = "both";
+#                    patterns = [ "*" "[!Gmail]*" "[Gmail/Sent Mail]" ];
+#                };
+#                realName = "${name}";
+#            };
+#            main = {
+#                address = "${email}";
+#                userName = "";
+#                flavor = "imap";
+#                mbsync = {
+#     	 	     enable = true;
+#                    expunge = "both";
+#                    patterns = [ ];
+#                };
+#                realName = "${email}";
+#            };
+#        };
+#    };
 
     xdg = {
         enable = true;
         configFile = {
             "feh/keys".source = ../../dotfiles/feh/keys;
-            "picom.conf".source = ../../dotfiles/picom.conf;
-	    "sxhkd/sxhkdrc".source = ../../dotfiles/sxhkdrc/sxhkdrc;
+	    "sxhkd/sxhkdrc".source = ../../dotfiles/sxhkd/sxhkdrc;
 
             "bspwm/bspwmrc".source = ./dotfiles/bspwmrc;
             "khal/config".source = ./dotfiles/khal;

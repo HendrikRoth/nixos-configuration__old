@@ -99,7 +99,7 @@ super + y
     firefox
 
 super + Return
-    ${TERM}
+    kitty
 
 super + {u,i,o}
     ${TERM} -e {$FILEMANAGER,$MUSICCLIENT,$EDITOR}

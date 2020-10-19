@@ -59,7 +59,7 @@ in
             plugins = let
             in with pkgs.vimPlugins; [
                 coc-nvim
-                coc-svelte
+ #               coc-svelte
                 coc-tsserver
                 coc-fzf
                 coc-json
@@ -68,7 +68,7 @@ in
                 fzf-vim
                 vim-fugitive
                 vim-surround
-                vim-svelte
+#                vim-svelte
                 vim-nix
                 vim-which-key
             ];
