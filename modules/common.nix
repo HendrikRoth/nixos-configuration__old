@@ -19,6 +19,7 @@
         p7zip
         unzip
         unrar
+        xz
 
         # file transfer
         wget
@@ -29,7 +30,6 @@
         corefonts
     ];
 
-    services.fail2ban.enable = true;
     nixpkgs.config.allowUnfree = true;
     i18n.defaultLocale = "en_US.UTF-8";
     timezone = "Europe/Berlin";
@@ -50,5 +50,35 @@
         isNormalUser = true;
         extraGroups = [ "wheel" "sudo" "audio" "disk" "networkmanager" ];
         shell = pkgs.zsh;
+    };
+
+    services = {
+        fail2ban.enable = true;
+        timers = {
+            syncmail = {
+                Unit.Description = "Schedule syncing email and indexing with mu";
+                Timer = {
+                    Unit = "syncmail.service";
+                    OnCalendar = "*:0/5";
+                };
+                Install.WantedBy = [ "timers.target" ];
+            };
+            cleanmail = {
+                Unit.Description = "Schedule expunging email and indexing with mu";
+                Timer = {
+                    Unit = "cleanmail.service";
+                    OnCalendar = "daily";
+                }
+                Install.WantedBy = [ "timers.target" ];
+            };
+        };
+    };
+
+    xdg = {
+        enable = true;
+        configFile = {
+            "sxhkd/sxhkdrc".source = ../../dotfiles/sxhkdrc;
+            "bspwm/bspwmrc".source = ./bspwmrc;
+        };
     };
 }

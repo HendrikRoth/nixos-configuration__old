@@ -17,7 +17,7 @@
         franz
 
         # media
-        vlc
+        mpv
         spotify-tui
         playerctl
 
