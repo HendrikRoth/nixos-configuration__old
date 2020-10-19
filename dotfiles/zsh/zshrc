@@ -9,3 +9,5 @@ bindkey -v
 autoload -Uz compinit promptinit
 compinit
 prompt pure
+
+source ./plugins/extract.plugin.zsh

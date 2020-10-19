@@ -19,12 +19,18 @@ in
         ../../modules/neovim.nix
     ];
 
-    home.file.".zshrc".source = ../../dotfiles/zshrc
-
-    home.username = "${username}";
-    home.homeDirectory = "${homedir}";
-
-    home.stateVersion = "20.09"
+    home = {
+        file.".zshrc".source = ../../dotfiles/zsh/zshrc
+        username = "${username}";
+        homeDirectory = "${homedir}";
+        stateVersion = "20.09"
+        sessionVariables = {
+            EDITOR = "nvim";
+            MUSICCLIENT = "spotify-tui";
+            MEDIACLIENT = "mpc";
+            BROWSER = "firefox";
+        };
+    };
 
     accounts.email = {
         mailDirPath = "${homedir}${maildir}";
@@ -61,6 +67,17 @@ in
         git = {
             userName = "${name}";
             userEmail = "${email}";
+        };
+    };
+
+    xdg = {
+        enable = true;
+        configFile = {
+            "feh/keys".source = ../../dotfiles/feh/keys;
+            "picom.conf".source = ../../dotfiles/picom.conf;
+
+            "bspwm/bspwmrc".source = ./dotfiles/bspwmrc;
+            "khal/config".source = ./dotfiles/khal;
         };
     };
 }

@@ -5,15 +5,17 @@
         # art
         inkscape
         gimp
-        feh
 
         # cad
         blender
         freecad
 
+        # productivity
+        zathura
+        libreoffice
+
         # network
         firefox
-        neomutt
         franz
 
         # media
@@ -21,11 +23,15 @@
         spotify-tui
         playerctl
 
-        # secrets
-        enpass
-
         # terminal
         kitty
+
+        # screen
+        feh
+        xflux
+
+        # utils
+        udiskie
     ];
 
     programs.tmux = {
@@ -56,8 +62,8 @@
 
     services.xserver = {
         enable = true;
-        layout = "us";
-        xkbOptions = "eurosign:e";
+        layout = "eu";
+        xkbOptions = "caps:swapescape";
         displayManager.slim.enable = true;
     };
 }

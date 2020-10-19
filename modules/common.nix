@@ -6,6 +6,9 @@
         zsh
         tmux
 
+        # languages
+        python3
+
         # productivity
         fzf
         gist
@@ -13,6 +16,16 @@
         lf
         git
         gitfs
+
+        # mail
+        neomutt
+
+        # calendar
+        khal
+        vdirsyncer
+
+        # secrets
+        keepass
 
         # compression
         zip
@@ -71,14 +84,6 @@
                 }
                 Install.WantedBy = [ "timers.target" ];
             };
-        };
-    };
-
-    xdg = {
-        enable = true;
-        configFile = {
-            "sxhkd/sxhkdrc".source = ../../dotfiles/sxhkdrc;
-            "bspwm/bspwmrc".source = ./bspwmrc;
         };
     };
 }
