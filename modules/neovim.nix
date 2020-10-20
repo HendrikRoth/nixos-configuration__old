@@ -1,14 +1,25 @@
 { config, pkgs, ... }:
 
 let
+    vim-vader = pkgs.vimUtils.buildVimPlugin {
+        name = "vader.vim";
+        src = pkgs.fetchFromGitHub {
+          owner = "junegunn";
+          repo = "vader.vim";
+          rev = "6fff477431ac3191c69a3a5e5f187925466e275a";
+          sha256 = "153cr1mrf5w5lyr8374brwx1z5yl9h0cnijxnd3xikh3yi3pbmwk";
+        };
+    };
+
     vim-svelte = pkgs.vimUtils.buildVimPlugin {
         name = "vim-svelte";
         src = pkgs.fetchFromGitHub {
             owner = "evanleck";
             repo = "vim-svelte";
             rev = "f63fa77d621b25092081cce815effd7fbc169113";
-            sha256 = "d98498f065a049541975a9c567e9d0b5514245117bef1d6ea77f924b7ef0a641";
+            sha256 = "0j7j6ibrylv32y0vw002yayfg7xia59nm2952bhbwlkl6m2cwnz9";
         };
+        buildPhase = true;
     };
 
     coc-svelte = pkgs.vimUtils.buildVimPlugin {
@@ -17,7 +28,7 @@ let
             owner = "coc-extensions";
             repo = "coc-svelte";
             rev = "942857b2bd8318a770d2c5c63b2cd0c437a134e4";
-            sha256 = "c8e015d9ee217f2849e9b0f572a50c74dfe4ad9be6bda144c74c1c117056bdec";
+            sha256 = "060kp555w4y9jc6jwyrc9wzdnj87j1gr90kx29kv6g83zm57d1f0";
         };
     };
 
@@ -58,8 +69,9 @@ in
             '';
             plugins = let
             in with pkgs.vimPlugins; [
+                vim-vader
                 coc-nvim
- #               coc-svelte
+                coc-svelte
                 coc-tsserver
                 coc-fzf
                 coc-json
@@ -68,7 +80,7 @@ in
                 fzf-vim
                 vim-fugitive
                 vim-surround
-#                vim-svelte
+                vim-svelte
                 vim-nix
                 vim-which-key
             ];
