@@ -30,9 +30,15 @@
         # screen
         feh
         xflux
+        xclip
+        scrot
 
         # utils
         udiskie
+
+        # theme
+        ant-theme
+        flat-remix-icon-theme
     ];
 
     programs.tmux = {

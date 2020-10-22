@@ -70,7 +70,7 @@ in
             plugins = let
             in with pkgs.vimPlugins; [
                 vim-vader
-                coc-nvim
+#                coc-nvim
                 coc-svelte
                 coc-tsserver
                 coc-fzf
@@ -80,7 +80,7 @@ in
                 fzf-vim
                 vim-fugitive
                 vim-surround
-                vim-svelte
+#                vim-svelte
                 vim-nix
                 vim-which-key
             ];

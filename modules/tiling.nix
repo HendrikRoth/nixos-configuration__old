@@ -7,6 +7,7 @@
         dunst
         picom
         materia-theme
+        rofi
     ];
 
     services = {
@@ -18,7 +19,7 @@
             enable = true;
             fade = true;
             shadow = true;
-            fadeDelta = 4;
+            fadeDelta = 2;
         };
     };
 }

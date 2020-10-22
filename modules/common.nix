@@ -5,6 +5,9 @@
         # shell
         zsh
         tmux
+        thefuck
+        bat
+        exa
 
         # languages
         python3
@@ -41,6 +44,9 @@
     ];
 
     fonts.fonts = with pkgs; [
+        noto-fonts
+        fira-code
+        fira-code-symbols
         corefonts
     ];
 
@@ -51,15 +57,34 @@
     time.timeZone = "Europe/Berlin";
 
     programs = {
-        tmux.enable = true;
+        tmux = {
+            enable = true;
+        };
+
         zsh = {
             enable = true;
             enableCompletion = true;
             autosuggestions.enable = true;
             syntaxHighlighting.enable = true;
+            ohMyZsh = {
+                enable = true;
+                theme = "robbyrussell";
+                plugins = [ "git" "sudo" "tmux" "thefuck" "extract" "docker" ];
+            };
+            shellAliases = {
+              v = "vim";
+              c = "clear";
+              ls = "exa";
+              l = "exa -abgHhl@ --git --color=always --group-directories-first";
+              cat = "bat --paging=never";
+              less = "bat --paging=always --style='changes --color=always";
+              tree = "exa --tree --color=always";
+            };
+            shellInit = "";
         };
     };
 
+    users.defaultUserShell = pkgs.zsh;
     users.users.hendrik = {
         isNormalUser = true;
         extraGroups = [ "wheel" "sudo" "audio" "disk" "networkmanager" ];
