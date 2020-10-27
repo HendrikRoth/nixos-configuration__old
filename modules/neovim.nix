@@ -1,16 +1,6 @@
 { config, pkgs, ... }:
 
 let
-    vim-vader = pkgs.vimUtils.buildVimPlugin {
-        name = "vader.vim";
-        src = pkgs.fetchFromGitHub {
-          owner = "junegunn";
-          repo = "vader.vim";
-          rev = "6fff477431ac3191c69a3a5e5f187925466e275a";
-          sha256 = "153cr1mrf5w5lyr8374brwx1z5yl9h0cnijxnd3xikh3yi3pbmwk";
-        };
-    };
-
     vim-svelte = pkgs.vimUtils.buildVimPlugin {
         name = "vim-svelte";
         src = pkgs.fetchFromGitHub {
@@ -69,18 +59,24 @@ in
             '';
             plugins = let
             in with pkgs.vimPlugins; [
-                vim-vader
-#                coc-nvim
+                calendar-vim
+                coc-nvim
                 coc-svelte
                 coc-tsserver
                 coc-fzf
                 coc-json
                 coc-yaml
+                editorconfig-vim
                 lightline-vim
                 fzf-vim
+                open-browser-vim
+                vim-easymotion
+                vim-easy-align
                 vim-fugitive
+                vim-graphql
+                vim-sort-motion
                 vim-surround
-#                vim-svelte
+                vim-svelte
                 vim-nix
                 vim-which-key
             ];
