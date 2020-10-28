@@ -8,8 +8,8 @@ let
             repo = "vim-svelte";
             rev = "f63fa77d621b25092081cce815effd7fbc169113";
             sha256 = "0j7j6ibrylv32y0vw002yayfg7xia59nm2952bhbwlkl6m2cwnz9";
-        };
-        buildPhase = true;
+         };
+         buildPhase = ":";
     };
 
     coc-svelte = pkgs.vimUtils.buildVimPlugin {
@@ -50,9 +50,28 @@ in
                 set background=light
                 set number
                 set nocompatible
+                set noshowmode
 
-                let g:mapleader="\Space"
-                let g:maplocalleader=","
+                let g:mapleader = "\Space"
+                let g:maplocalleader = ","
+                let g:lightline = {
+                \  "active": {
+                \    "left": [ [ "mode", "paste" ],
+                \              [ "cocstatus", "gitbranch", "readonly", "filename", "modified" ] ]
+                \  },
+                \  "component_function": {
+                \    "gitbranch": "gitbranch#name",
+                \    "cocstatus": "coc#status"
+                \  }
+                \} 
+                autocmd User CocStatusChange,CocDiagnisticChange call lightline#update()
+
+                " recommended for coc
+                inoremap <silent><expr> <TAB>
+                  \ pumvisible() ? "\<C-n>" :
+                  \ <SID>check_back_space() ? "\<TAB>" :
+                  \ coc#refresh()
+                inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
                 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
                 nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
@@ -73,6 +92,7 @@ in
                 vim-easymotion
                 vim-easy-align
                 vim-fugitive
+                vim-gitbranch
                 vim-graphql
                 vim-sort-motion
                 vim-surround
