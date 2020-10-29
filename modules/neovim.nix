@@ -22,6 +22,27 @@ let
         };
     };
 
+    vim-iris = pkgs.vimUtils.buildVimPlugin {
+        name = "iris-vim";
+        src = pkgs.fetchFromGitHub {
+            owner = "soywod";
+            repo = "iris.vim";
+            rev = "97e1e476c4b7a4e8a5db127599790dce8366c6ab";
+            sha256 = "0rvdkdss33r4456bg7jhl250db2sjllljhgjgh080y0cmfr9djd8";
+        };
+    };
+
+    fzf-checkout = pkgs.vimUtils.buildVimPlugin {
+        name = "fzf-checkout";
+        src = pkgs.fetchFromGitHub {
+            owner = "stsewd";
+            repo = "fzf-checkout.vim";
+            rev = "e9f8f6592ba04e3e2d31c64a77acc5a6bce012d8";
+            sha256 = "09g08gsm7sjmnyfbydc8s4jfnrw8fk3qyjl7dd2bifm5w3kqk924";
+        };
+        buildPhase = ":";
+    };
+
 in
 {
     home.packages = with pkgs; [
@@ -40,19 +61,30 @@ in
                 filetype plugin indent on
                 syntax on
                 set backspace=indent,eol,start
+                set tabstop=4 softtabstop=4
+                set shiftwidth=4
+                set incsearch
                 set hidden
+                set expandtab
+                set smartindent
+                set smartcase
                 set nobackup
                 set nowritebackup
                 set noswapfile
+                set nowrap
                 set cmdheight=2
+                set scrolloff=5
                 set updatetime=300
                 set shortmess+=c
                 set background=light
                 set number
                 set nocompatible
                 set noshowmode
+                set updatetime=50
+                set colorcolumn=80
+                highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-                let g:mapleader = "\Space"
+                let g:mapleader = " "
                 let g:maplocalleader = ","
                 let g:lightline = {
                 \  "active": {
@@ -64,17 +96,24 @@ in
                 \    "cocstatus": "coc#status"
                 \  }
                 \} 
-                autocmd User CocStatusChange,CocDiagnisticChange call lightline#update()
+                let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+                let $FZF_DEFAULT_OPTS = '--reverse'
 
-                " recommended for coc
-                inoremap <silent><expr> <TAB>
-                  \ pumvisible() ? "\<C-n>" :
-                  \ <SID>check_back_space() ? "\<TAB>" :
-                  \ coc#refresh()
-                inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+                autocmd User CocStatusChange,CocDiagnisticChange call lightline#update()
 
                 nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
                 nnoremap <silent> <localleader> :<c-u>WhichKey ','<CR>
+                nnoremap <leader>h :wincmd h<CR>
+                nnoremap <leader>j :wincmd j<CR>
+                nnoremap <leader>k :wincmd k<CR>
+                nnoremap <leader>l :wincmd l<CR>
+                nnoremap <leader>+ :vertical resize +5<CR>
+                nnoremap <leader>- :vertical resize -5<CR>
+
+                nnoremap <leader>p :Files<CR>
+                nnoremap <leader>gc :GBranches<CR>
+                nnoremap <leader>u :UndotreeShow<CR>
+                nnoremap <leader>gf :Git fetch --all<CR>
             '';
             plugins = let
             in with pkgs.vimPlugins; [
@@ -88,16 +127,19 @@ in
                 editorconfig-vim
                 lightline-vim
                 fzf-vim
+                fzf-checkout
                 open-browser-vim
                 vim-easymotion
                 vim-easy-align
                 vim-fugitive
                 vim-gitbranch
                 vim-graphql
+                vim-iris
                 vim-sort-motion
                 vim-surround
                 vim-svelte
                 vim-nix
+                undotree
                 vim-which-key
             ];
         };
