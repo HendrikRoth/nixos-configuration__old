@@ -114,6 +114,8 @@ in
                 nnoremap <leader>gc :GBranches<CR>
                 nnoremap <leader>u :UndotreeShow<CR>
                 nnoremap <leader>gf :Git fetch --all<CR>
+
+                vnoremap <leader>p "_dP
             '';
             plugins = let
             in with pkgs.vimPlugins; [
