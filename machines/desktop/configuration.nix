@@ -1,5 +1,11 @@
 { config, pkgs, ...}:
 {
+    nix.extraOptions = ''
+        plugin-files = ${pkgs.nix-plugins_4.override { nix = config.nix.package; }}/lib/nix/plugins/libnix-extra-builtins.so
+    '';
+
+    deployment.keys.secrets.text = builtins.extraBuiltins.pass "secrets";
+
     imports = [
         ./hardware-configuration.nix
         ../../modules/common.nix

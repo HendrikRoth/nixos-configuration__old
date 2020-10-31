@@ -43,6 +43,16 @@ let
         buildPhase = ":";
     };
 
+    vim-nnn = pkgs.vimUtils.buildVimPlugin {
+        name = "vim-nnn";
+        src = pkgs.fetchFromGitHub {
+            owner = "mcchrish";
+            repo = "nnn.vim";
+            rev = "12a376646f05f71fb111892d07f84b94a47dbac5";
+            sha256 = "1n746cw3lxq0jp062gz3cnfg4qb8zrprgxav5jmi1zp626w4b7xq";
+        };
+    };
+
 in
 {
     home.packages = with pkgs; [
@@ -98,6 +108,10 @@ in
                 \} 
                 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
                 let $FZF_DEFAULT_OPTS = '--reverse'
+                let g:nnn#layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+                let g:nnn#set_default_mappings = 0
+                let g:calendar_google_calendar = 1
+                let g:calendar_google_task = 1
 
                 autocmd User CocStatusChange,CocDiagnisticChange call lightline#update()
 
@@ -114,6 +128,8 @@ in
                 nnoremap <leader>gc :GBranches<CR>
                 nnoremap <leader>u :UndotreeShow<CR>
                 nnoremap <leader>gf :Git fetch --all<CR>
+                nnoremap <leader>n :NnnPicker %:p:h<CR>
+                nnoremap <leader>c :Calendar -first_day=monday<CR>
 
                 vnoremap <leader>p "_dP
             '';
@@ -141,6 +157,7 @@ in
                 vim-surround
                 vim-svelte
                 vim-nix
+                vim-nnn
                 undotree
                 vim-which-key
             ];

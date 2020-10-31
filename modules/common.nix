@@ -16,7 +16,7 @@
         fzf
         gist
         neovim
-        lf
+        nnn
         git
         gitfs
         w3m
@@ -29,6 +29,7 @@
         vdirsyncer
 
         # secrets
+        gnupg
         pass
 
         # compression

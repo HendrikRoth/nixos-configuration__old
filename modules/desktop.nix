@@ -39,6 +39,9 @@
         # theme
         ant-theme
         flat-remix-icon-theme
+
+        # misc
+        anydesk
     ];
 
     programs.tmux = {
