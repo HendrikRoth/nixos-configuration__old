@@ -20,6 +20,7 @@
         git
         gitfs
         w3m
+        htop
 
         # mail
         neomutt

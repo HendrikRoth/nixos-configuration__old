@@ -4,6 +4,7 @@
     imports = [
       ../programs/dwm
       ../programs/st
+      ../programs/dmenu
     ];
 
     environment.systemPackages = with pkgs; [
@@ -15,6 +16,7 @@
         rofi
         st
         dwm
+        dmenu
         xsel
     ];
 
