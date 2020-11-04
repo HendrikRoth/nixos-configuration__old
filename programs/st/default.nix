@@ -1,0 +1,4 @@
+{
+  nixpkgs.config.st.patches = [
+  ];
+}

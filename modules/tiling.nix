@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+    imports = [
+      ../programs/dwm
+      ../programs/st
+    ];
+
     environment.systemPackages = with pkgs; [
         sxhkd
         polybar
@@ -8,6 +13,9 @@
         picom
         materia-theme
         rofi
+        st
+        dwm
+        xsel
     ];
 
     services = {

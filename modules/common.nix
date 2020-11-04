@@ -42,6 +42,9 @@
         # file transfer
         wget
         rsync
+
+        # development
+        stdenv
     ];
 
     fonts.fonts = with pkgs; [

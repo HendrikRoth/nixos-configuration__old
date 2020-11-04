@@ -15,6 +15,11 @@ let
 
 in
 {
+    imports = [
+      ../../programs/dunst
+      ../../programs/neovim/neovim.nix
+    ];
+
     programs = {
         home-manager = {
             enable = true;
@@ -36,10 +41,6 @@ in
             BROWSER = "firefox";
         };
     };
-
-    imports = [
-        ../../modules/neovim.nix
-    ];
 
 #    accounts.email = {
 #        mailDirPath = "${homedir}${maildir}";
@@ -92,10 +93,10 @@ in
         };
     };
 
-    programs.pass = {
-        enable = true;
-        package = pkgs.pass.withExtensions (e: [ e.pass.audit e.pass-otp e.pass-import ]);
-    };
+    #programs.pass = {
+    #    enable = true;
+    #    package = pkgs.pass.withExtensions (e: [ e.pass.audit e.pass-otp e.pass-import ]);
+    #};
 
     xdg = {
         enable = true;
@@ -110,4 +111,17 @@ in
             "khal/config".source = ./dotfiles/khal;
         };
     };
+
+#    xsession = {
+#      enable = true;
+#      profileExtra = ''
+#        # xrdb $\{XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
+#        phicom2 -b &
+#        dunst &
+#        udiskie &
+#        pgrep xflux || xflux -l 43.36 -g 1.26 &
+#        xset r rate 300 500 & 
+#      '';
+#      #scriptPath = ".xinitrc";
+#    };
 }
