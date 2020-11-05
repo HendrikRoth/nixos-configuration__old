@@ -21,6 +21,8 @@
         gitfs
         w3m
         htop
+        translate-shell
+        calc
 
         # mail
         neomutt

@@ -102,13 +102,6 @@ in
         enable = true;
         configFile = {
             "feh/keys".source = ../../dotfiles/feh/keys;
-            "sxhkd/sxhkdrc".source = ../../dotfiles/sxhkd/sxhkdrc;
-            "rofi/config.rasi".source = ../../dotfiles/rofi/config.rasi;
-            "polybar/config".source = ../../dotfiles/polybar/config;
-            "polybar/launch.sh".source = ../../dotfiles/polybar/launch.sh;
-
-            "bspwm/bspwmrc".source = ./dotfiles/bspwmrc;
-            "khal/config".source = ./dotfiles/khal;
         };
     };
 

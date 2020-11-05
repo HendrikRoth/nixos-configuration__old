@@ -2,28 +2,25 @@
 
 {
     imports = [
+      ../programs/dmenu
       ../programs/dwm
       ../programs/st
-      ../programs/dmenu
     ];
 
     environment.systemPackages = with pkgs; [
-        sxhkd
-        polybar
         dunst
         picom
         materia-theme
-        rofi
-        st
-        dwm
         dmenu
+        dwm
+        st
         xsel
     ];
 
     services = {
         xserver = {
-            displayManager.defaultSession = "none+bspwm";
-            windowManager.bspwm.enable = true;
+            displayManager.defaultSession = "none+dwm";
+            windowManager.dwm.enable = true;
         };
         picom = {
             enable = true;
