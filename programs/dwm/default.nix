@@ -9,6 +9,6 @@
       ./6-deck.diff
       ./7-columns.diff
     ];
-    header_config_file = ./config.h;
+    conf = builtins.readFile ./config.h;
   };
 }
