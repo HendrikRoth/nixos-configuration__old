@@ -23,6 +23,7 @@
         htop
         translate-shell
         calc
+        imgurbash2
 
         # mail
         neomutt
