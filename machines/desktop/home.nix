@@ -102,6 +102,7 @@ in
         enable = true;
         configFile = {
             "feh/keys".source = ../../dotfiles/feh/keys;
+            "scripts".source = ../../scripts;
         };
     };
 
