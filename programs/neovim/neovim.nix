@@ -92,11 +92,11 @@ in
                 set noshowmode
                 set updatetime=50
                 set colorcolumn=80
-                highlight ColorColumn ctermbg=0 guibg=lightgrey
 
                 let g:mapleader = " "
                 let g:maplocalleader = ","
                 let g:lightline = {
+                \  "colorscheme": "ayu_light",
                 \  "active": {
                 \    "left": [ [ "mode", "paste" ],
                 \              [ "cocstatus", "gitbranch", "readonly", "filename", "modified" ] ]
@@ -132,6 +132,9 @@ in
                 nnoremap <leader>c :Calendar -first_day=monday<CR>
 
                 vnoremap <leader>p "_dP
+
+                hi LineNr guifg=#969696 guibg=#f5f5f5f5 guisp=#f5f5f5 ctermfg=246 ctermbg=255
+                hi ColorColumn ctermbg=255
             '';
             plugins = let
             in with pkgs.vimPlugins; [
@@ -155,6 +158,7 @@ in
                 vim-iris
                 vim-sort-motion
                 vim-surround
+                vim-startify
                 vim-svelte
                 vim-nix
                 vim-nnn

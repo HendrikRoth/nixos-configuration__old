@@ -20,6 +20,8 @@
             ../programs/dwm/5-sticky.diff
             ../programs/dwm/6-deck.diff
             ../programs/dwm/7-columns.diff
+            ../programs/dwm/8-xresources.diff
+            ../programs/dwm/9-alpha.diff
           ];
           postPatch = let
             configFile = pkgs.writeText "config.def.h" (builtins.readFile ../programs/dwm/config.h);

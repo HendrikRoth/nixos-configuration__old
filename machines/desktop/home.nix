@@ -106,6 +106,8 @@ in
         };
     };
 
+    xresources.extraConfig = builtins.readFile ../../dotfiles/xresources;
+
 #    xsession = {
 #      enable = true;
 #      profileExtra = ''
