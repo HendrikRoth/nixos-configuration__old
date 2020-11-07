@@ -24,9 +24,14 @@
         translate-shell
         calc
         imgurbash2
+        lazygit
+        lazydocker
 
         # mail
         neomutt
+        isync
+        msmtp
+        notmuch
 
         # calendar
         khal
@@ -35,6 +40,7 @@
         # secrets
         gnupg
         pass
+        pinentry
 
         # compression
         zip

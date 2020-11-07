@@ -20,16 +20,6 @@ in
       ../../programs/neovim/neovim.nix
     ];
 
-    programs = {
-        home-manager = {
-            enable = true;
-        };
-        git = {
-            userName = "${name}";
-            userEmail = "${email}";
-        };
-    };
-
     home = {
         username = "${username}";
         homeDirectory = "${homedir}";
@@ -42,35 +32,52 @@ in
         };
     };
 
-#    accounts.email = {
-#        mailDirPath = "${homedir}${maildir}";
-#        accounts = {
-#            gmail = {
-#                address = "mail@henn1nk.com";
-#    		 userName = "mail@henn1nk.com";
-#                flavor = "gmail";
-#                mbsync = {
-#                    enable = true;
-#                    expunge = "both";
-#                    patterns = [ "*" "[!Gmail]*" "[Gmail/Sent Mail]" ];
-#                };
-#                realName = "${name}";
-#            };
-#            main = {
-#                address = "${email}";
-#                userName = "";
-#                flavor = "imap";
-#                mbsync = {
-#     	 	     enable = true;
-#                    expunge = "both";
-#                    patterns = [ ];
-#                };
-#                realName = "${email}";
-#            };
-#        };
-#    };
+    accounts.email = {
+        accounts = {
+          gmail = {
+            notmuch.enable = true;
+            msmtp.enable = true;
+            neomutt.enable = true;
+            address = "mail@henn1nk.com";
+            userName = "mail@henn1nk.com";
+            flavor = "gmail.com";
+            mbsync = {
+                enable = true;
+                create = "both";
+#                expunge = "both";
+                patterns = [ "*" "[!Gmail]*" "[Gmail/Sent Mail]" ];
+            };
+            realName = "${name}";
+            passwordCommand = "${pkgs.pass}/bin/pass mail@henn1nk.com";
+          };
+          main = {
+            primary = true;
+            address = "${email}";
+            userName = "${email}";
+            flavor = "plain";
+            mbsync = {
+              enable = true;
+              create = "both";
+#              expunge = "both";
+              patterns = [ ];
+            };
+            realName = "${name}";
+            imap.host = "imap.zoho.eu";
+            smtp.host = "smtp.zoho.eu";
+            passwordCommand = "${pkgs.pass}/bin/pass ${email}";
+          };
+      };
+    };
 
-     programs.zsh = {
+    programs = {
+      home-manager = {
+          enable = true;
+      };
+      git = {
+          userName = "${name}";
+          userEmail = "${email}";
+      };
+      zsh = {
         enable = true;
         enableCompletion = true;
         enableAutosuggestions = true;
@@ -83,6 +90,7 @@ in
         };
         shellAliases = {
           n = "nnn";
+          m = "neomutt";
           v = "vim";
           c = "clear";
           ls = "exa";
@@ -91,6 +99,7 @@ in
           less = "bat --paging=always --style='changes --color=always";
           tree = "exa --tree --color=always";
         };
+      };
     };
 
     #programs.pass = {
