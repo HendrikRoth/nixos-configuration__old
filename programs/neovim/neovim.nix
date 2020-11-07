@@ -33,13 +33,13 @@ let
         buildPhase = ":";
     };
 
-    vim-nnn = pkgs.vimUtils.buildVimPlugin {
-        name = "vim-nnn";
+    tagalong = pkgs.vimUtils.buildVimPlugin {
+        name = "tagalong";
         src = pkgs.fetchFromGitHub {
-            owner = "mcchrish";
-            repo = "nnn.vim";
-            rev = "12a376646f05f71fb111892d07f84b94a47dbac5";
-            sha256 = "1n746cw3lxq0jp062gz3cnfg4qb8zrprgxav5jmi1zp626w4b7xq";
+            owner = "AndrewRadev";
+            repo = "tagalong.vim";
+            rev = "02991180362687a2ecc9fa0ca97cd5f5fa4b223d";
+            sha256 = "10lzbmpmw7sb6xh441y1j4262jhn40rbkrm4hgfp5rhvggvgj2nw";
         };
     };
 
@@ -85,8 +85,9 @@ in
                 set updatetime=50
                 set timeoutlen=100
 
-                let g:mapleader = " "
-                let g:maplocalleader = ","
+                let mapleader = " "
+                nnoremap <Space> <Nop>
+
                 let g:lightline = {
                 \  "colorscheme": "ayu_light",
                 \  "active": {
@@ -100,8 +101,6 @@ in
                 \} 
                 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
                 let $FZF_DEFAULT_OPTS = '--reverse'
-                let g:nnn#layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-                let g:nnn#set_default_mappings = 0
                 let g:calendar_google_calendar = 1
                 let g:calendar_google_task = 1
                 let g:floaterm_autoinsert = 1
@@ -109,6 +108,8 @@ in
                 let g:floaterm_height = 0.8
                 let g:floaterm_title = 0
                 let g:floaterm_autoclose = 1
+                let g:tagalong_filetypes = ['html', 'xml', 'jsx', 'ejs', 'javascriptreact', 'typescriptreact', 'javascript', 'svelte']
+                let g:tagalong_verbose = 1
                 let g:which_key_use_floating_win = 0
                 let g:which_key_max_size = 0
                 let g:which_key_map = {}
@@ -128,6 +129,11 @@ in
                 let g:which_key_map['u'] = [':UndotreeToggle', 'undo tree']
                 let g:which_key_map['v'] = ['<C-W>v', 'split right']
                 let g:which_key_map['z'] = [':Goyo', 'distraction free']
+                let g:which_key_map.f = {
+                  \ 'name' : '+find & replace' ,
+                  \ 'f' : [':Farr', 'file'],
+                  \ 'p' : [':Farr', 'project'],
+                  \ }
                 let g:which_key_map.g = {
                   \ 'name': '+git',
                   \ 'a': [':Git add .', 'add all'],
@@ -184,20 +190,25 @@ in
                 autocmd! FileType which_key
                 autocmd  FileType which_key set laststatus=0 noshowmode noruler
                   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-
-                nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-                vnoremap <leader>p "_dP
-                vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-
-                hi LineNr guifg=#969696 guibg=#f5f5f5f5 guisp=#f5f5f5 ctermfg=246 ctermbg=255
-                hi ColorColumn ctermbg=255
-
                 " Goyo for mutt writing
                 autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
                 autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo
                 autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
                 autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
+
+                nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+                nnoremap <silent> <TAB> :bnext<CR>
+                nnoremap <silent> <S-TAB> :bprevious<CR>
+
+                inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+                vnoremap < <gv
+                vnoremap > >gv
+                vnoremap <leader>p "_dP
+                vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
+                hi LineNr guifg=#969696 guibg=#f5f5f5f5 guisp=#f5f5f5 ctermfg=246 ctermbg=255
+                hi ColorColumn ctermbg=255
             '';
             plugins = let
             in with pkgs.vimPlugins; [
@@ -207,14 +218,17 @@ in
                 coc-nvim
                 coc-svelte
                 coc-tsserver
+                coc-snippets
                 coc-yaml
                 editorconfig-vim
+                far-vim
                 fzf-checkout
                 fzf-vim
                 goyo-vim
                 lightline-vim
                 nerdcommenter
                 open-browser-vim
+                tagalong
                 undotree
                 vim-easy-align
                 vim-easymotion
@@ -223,7 +237,6 @@ in
                 vim-gitbranch
                 vim-graphql
                 vim-nix
-                vim-nnn
                 vim-sort-motion
                 vim-startify
                 vim-surround
