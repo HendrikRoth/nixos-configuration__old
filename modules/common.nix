@@ -13,6 +13,7 @@
         python3
 
         # productivity
+        ctags
         fzf
         gist
         neovim

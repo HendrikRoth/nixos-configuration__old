@@ -64,7 +64,8 @@ in
                 set backspace=indent,eol,start
                 set cmdheight=2
                 set colorcolumn=80
-                set clipboard=unnamed
+                set clipboard+=unnamedplus
+                set encoding=UTF-8
                 set expandtab
                 set hidden
                 set incsearch
@@ -230,6 +231,7 @@ in
                 open-browser-vim
                 tagalong
                 undotree
+                vim-devicons
                 vim-easy-align
                 vim-easymotion
                 vim-floaterm
