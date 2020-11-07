@@ -64,6 +64,7 @@ in
                 set backspace=indent,eol,start
                 set cmdheight=2
                 set colorcolumn=80
+                set clipboard=unnamed
                 set expandtab
                 set hidden
                 set incsearch
@@ -111,6 +112,22 @@ in
                 let g:which_key_use_floating_win = 0
                 let g:which_key_max_size = 0
                 let g:which_key_map = {}
+                let g:which_key_map['+'] = [':vertical resize +5', 'vertical resize +']
+                let g:which_key_map['-'] = [':vertical resize -5', 'vertical resize -']
+                let g:which_key_map['='] = ['<C-W>=', 'balance windows']
+                let g:which_key_map['b'] = [':Buffers', 'search buffers']
+                let g:which_key_map['C'] = [':Calendar -first_day=monday', 'calendar']
+                let g:which_key_map['c'] = [':Commands', 'commands']
+                let g:which_key_map['h'] = [':wincmd h', 'left window']
+                let g:which_key_map['j'] = [':wincmd j', 'bottom window']
+                let g:which_key_map['k'] = [':wincmd k', 'top window']
+                let g:which_key_map['l'] = [':wincmd l', 'right window']
+                let g:which_key_map['p'] = [':Files', 'search files']
+                let g:which_key_map['q'] = [':q', 'quit']
+                let g:which_key_map['s'] = ['<C-W>h', 'split below']
+                let g:which_key_map['u'] = [':UndotreeToggle', 'undo tree']
+                let g:which_key_map['v'] = ['<C-W>v', 'split right']
+                let g:which_key_map['z'] = [':Goyo', 'distraction free']
                 let g:which_key_map.g = {
                   \ 'name': '+git',
                   \ 'a': [':Git add .', 'add all'],
@@ -124,6 +141,33 @@ in
                   \ 'p': [':Git push', 'push'],
                   \ 'P': [':Git pull', 'pull'],
                   \ 'r': [':GRemove', 'remove'],
+                  \ }
+                let g:which_key_map.s = {
+                  \ 'name' : '+search' ,
+                  \ '/' : [':History/'              , 'history'],
+                  \ ';' : [':Commands'              , 'commands'],
+                  \ 'a' : [':Ag'                    , 'text Ag'],
+                  \ 'b' : [':BLines'                , 'current buffer'],
+                  \ 'B' : [':Buffers'               , 'open buffers'],
+                  \ 'c' : [':Commits'               , 'commits'],
+                  \ 'C' : [':BCommits'              , 'buffer commits'],
+                  \ 'f' : [':Files'                 , 'files'],
+                  \ 'g' : [':GFiles'                , 'git files'],
+                  \ 'G' : [':GFiles?'               , 'modified git files'],
+                  \ 'h' : [':History'               , 'file history'],
+                  \ 'H' : [':History:'              , 'command history'],
+                  \ 'l' : [':Lines'                 , 'lines'] ,
+                  \ 'm' : [':Marks'                 , 'marks'] ,
+                  \ 'M' : [':Maps'                  , 'normal maps'] ,
+                  \ 'p' : [':Helptags'              , 'help tags'] ,
+                  \ 'P' : [':Tags'                  , 'project tags'],
+                  \ 's' : [':CocList snippets'      , 'snippets'],
+                  \ 'S' : [':Colors'                , 'color schemes'],
+                  \ 't' : [':Rg'                    , 'text Rg'],
+                  \ 'T' : [':BTags'                 , 'buffer tags'],
+                  \ 'w' : [':Windows'               , 'search windows'],
+                  \ 'y' : [':Filetypes'             , 'file types'],
+                  \ 'z' : [':FZF'                   , 'FZF'],
                   \ }
                 let g:which_key_map.t = {
                   \ 'name': '+terminal',
@@ -142,19 +186,6 @@ in
                   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
                 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-                nnoremap <leader>h :wincmd h<CR>
-                nnoremap <leader>j :wincmd j<CR>
-                nnoremap <leader>k :wincmd k<CR>
-                nnoremap <leader>l :wincmd l<CR>
-                nnoremap <leader>+ :vertical resize +5<CR>
-                nnoremap <leader>- :vertical resize -5<CR>
-
-                nnoremap <leader>p :Files<CR>
-                nnoremap <leader>b :Buffers<CR>
-                nnoremap <leader>u :UndotreeShow<CR>
-                nnoremap <leader>n :NnnPicker %:p:h<CR>
-                nnoremap <leader>c :Calendar -first_day=monday<CR>
-                nnoremap <leader>f :Goyo \| set linebreak<CR>
 
                 vnoremap <leader>p "_dP
                 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
