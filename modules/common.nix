@@ -13,6 +13,7 @@
         python3
 
         # productivity
+        jq
         ctags
         fzf
         gist
@@ -27,6 +28,7 @@
         imgurbash2
         lazygit
         lazydocker
+        newsboat
 
         # mail
         neomutt
@@ -97,6 +99,7 @@
             };
             shellInit = "";
         };
+        gnupg.agent.enable = true;
     };
 
     users.defaultUserShell = pkgs.zsh;
@@ -110,5 +113,11 @@
         fail2ban.enable = true;
         openssh.enable = true;
         blueman.enable = true;
+        cron = {
+          enable = true;
+          systemCronJobs = [
+            "*/30 * * * * hendrik . /etc/profile; ${pkgs.newsboat}/bin/newsboat -x reload"
+          ];
+        };
     };
 }

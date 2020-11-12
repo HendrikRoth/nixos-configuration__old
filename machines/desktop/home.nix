@@ -48,7 +48,7 @@ in
                 patterns = [ "*" "[!Gmail]*" "[Gmail/Sent Mail]" ];
             };
             realName = "${name}";
-            passwordCommand = "${pkgs.pass}/bin/pass mail@henn1nk.com";
+            passwordCommand = "${pkgs.pass}/bin/pass mail/mail@henn1nk.com";
           };
           main = {
             primary = true;
@@ -64,7 +64,7 @@ in
             realName = "${name}";
             imap.host = "imap.zoho.eu";
             smtp.host = "smtp.zoho.eu";
-            passwordCommand = "${pkgs.pass}/bin/pass ${email}";
+            passwordCommand = "${pkgs.pass}/bin/pass mail/${email}";
           };
       };
     };
@@ -111,6 +111,7 @@ in
         enable = true;
         configFile = {
             "feh/keys".source = ../../dotfiles/feh/keys;
+            "newsboat".source = ../../programs/newsboat;
             "scripts".source = ../../scripts;
         };
     };

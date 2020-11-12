@@ -3,6 +3,15 @@
 {
     imports = [
       ../programs/dmenu
+#      ../programs/dmenu-calc
+#      ../programs/dmenu-mail
+#      ../programs/dmenu-power
+#      ../programs/dmenu-scrot
+#      ../programs/dmenu-playerctl
+#      ../programs/dmenu-translate
+#      ../programs/dmenu-wallpaper
+#      ../programs/dmenu-web-search
+#      ../programs/dmenu-man-search
       ../programs/st
     ];
 
@@ -30,6 +39,7 @@
         }))
         st
         xsel
+        (callPackage ../programs/onlineip {})
     ];
 
 
