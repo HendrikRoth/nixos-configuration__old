@@ -3,15 +3,6 @@
 {
     imports = [
       ../programs/dmenu
-#      ../programs/dmenu-calc
-#      ../programs/dmenu-mail
-#      ../programs/dmenu-power
-#      ../programs/dmenu-scrot
-#      ../programs/dmenu-playerctl
-#      ../programs/dmenu-translate
-#      ../programs/dmenu-wallpaper
-#      ../programs/dmenu-web-search
-#      ../programs/dmenu-man-search
       ../programs/st
     ];
 
@@ -39,9 +30,18 @@
         }))
         st
         xsel
+        libnotify
         (callPackage ../programs/onlineip {})
+        (callPackage ../programs/dmenu-calc {})
+        (callPackage ../programs/dmenu-mail {})
+        (callPackage ../programs/dmenu-power {})
+        #(callPackage ../programs/dmenu-scrot {})
+        (callPackage ../programs/dmenu-playerctl {})
+        (callPackage ../programs/dmenu-translate {})
+        (callPackage ../programs/dmenu-wallpaper {})
+        (callPackage ../programs/dmenu-web-search {})
+        (callPackage ../programs/dmenu-man-search {})
     ];
-
 
     services = {
         xserver = {

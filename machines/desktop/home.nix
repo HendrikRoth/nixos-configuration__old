@@ -102,17 +102,11 @@ in
       };
     };
 
-    #programs.pass = {
-    #    enable = true;
-    #    package = pkgs.pass.withExtensions (e: [ e.pass.audit e.pass-otp e.pass-import ]);
-    #};
-
     xdg = {
         enable = true;
         configFile = {
             "feh/keys".source = ../../dotfiles/feh/keys;
             "newsboat".source = ../../programs/newsboat;
-            "scripts".source = ../../scripts;
         };
     };
 
