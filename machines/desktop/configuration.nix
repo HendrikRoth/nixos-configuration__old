@@ -27,7 +27,7 @@
     networking = {
         hostName = "desktop";
         useDHCP = false;
-        interfaces.wlp10s0.useDHCP = true;
+        interfaces.wlp6s0.useDHCP = true;
         networkmanager.enable = true;
     };
 
