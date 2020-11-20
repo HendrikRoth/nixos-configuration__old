@@ -6,7 +6,8 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "coretemp" "amdgpu" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest_hardened;
+  boot.kernelModules = [ "coretemp" "k10temp" "i2c-dev" "amdgpu" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =

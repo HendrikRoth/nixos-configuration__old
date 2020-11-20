@@ -76,4 +76,6 @@
         xkbOptions = "caps:escape";
         displayManager.lightdm.enable = true;
     };
+
+    services.dbus.packages = [ pkgs.at_spi2_core ];
 }

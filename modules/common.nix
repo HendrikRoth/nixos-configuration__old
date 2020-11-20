@@ -58,6 +58,9 @@
 
         # development
         stdenv
+
+        # system
+        dconf
     ];
 
     fonts.fonts = with pkgs; [
@@ -112,7 +115,7 @@
     services = {
         fail2ban.enable = true;
         openssh.enable = true;
-        blueman.enable = true;
+        #blueman.enable = true;
         cron = {
           enable = true;
           systemCronJobs = [
