@@ -11,6 +11,7 @@
         picom
         materia-theme
         dmenu
+        surf
         (dwm.overrideAttrs (oldAttrs: {
           patches = [
             ../programs/dwm/1-pertag.diff

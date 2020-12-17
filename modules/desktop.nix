@@ -13,6 +13,7 @@
         # productivity
         zathura
         libreoffice
+        enpass
 
         # network
         firefox

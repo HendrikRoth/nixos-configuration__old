@@ -108,9 +108,16 @@
     users.defaultUserShell = pkgs.zsh;
     users.users.hendrik = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "sudo" "audio" "disk" "networkmanager" ];
+        extraGroups = [ "wheel" "sudo" "audio" "disk" "networkmanager" "docker" ];
         shell = pkgs.zsh;
     };
+
+    virtualisation.virtualbox.host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
+    virtualisation.docker.enable = true;
+    users.extraGroups.vboxusers.members = [ "hendrik" ];
 
     services = {
         fail2ban.enable = true;
