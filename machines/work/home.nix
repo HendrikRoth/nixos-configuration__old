@@ -112,16 +112,17 @@ in
 
     xresources.extraConfig = builtins.readFile ../../dotfiles/xresources;
 
-#    xsession = {
-#      enable = true;
-#      profileExtra = ''
-#        # xrdb $\{XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
-#        phicom2 -b &
-#        dunst &
-#        udiskie &
-#        pgrep xflux || xflux -l 43.36 -g 1.26 &
-#        xset r rate 300 500 & 
-#      '';
-#      #scriptPath = ".xinitrc";
-#    };
+    xsession = {
+      enable = true;
+      windowManager.command = "dbus-run-session -- dwm";
+      profileExtra = ''
+        # xrdb $\{XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
+        dunst &
+        udiskie &
+        pgrep xflux || xflux -l 43.36 -g 1.26 &
+        xset r rate 300 500 & 
+        $HOME/.fehbg &
+      '';
+      #scriptPath = ".xinitrc";
+    };
 }

@@ -5,6 +5,6 @@ pkgs.writeShellScriptBin "dmenu-calc" ''
   origin="$(echo \'\' | ${pkgs.dmenu}/bin/dmenu $prompt)"
   result="$($origin | ${pkgs.calc}/bin/calc -p | tr -d '\n')"
   ${pkgs.libnotify}/bin/notify-send "$origin = $result"
-  ${pkgs.xsel}/bin/xsel $result
+  ${pkgs.xsel}/bin/xsel < $result
   exit 0
 ''

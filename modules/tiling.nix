@@ -36,6 +36,7 @@
         (callPackage ../programs/dmenu-calc {})
         (callPackage ../programs/dmenu-mail {})
         (callPackage ../programs/dmenu-power {})
+        (callPackage ../programs/dmenu-audio {})
         #(callPackage ../programs/dmenu-scrot {})
         (callPackage ../programs/dmenu-playerctl {})
         (callPackage ../programs/dmenu-translate {})

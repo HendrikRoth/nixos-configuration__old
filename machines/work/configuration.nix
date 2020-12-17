@@ -36,8 +36,17 @@
     };
 
     services.openssh.enable = true;
-    services.xserver.videoDrivers = [ "intel" ];
-    services.xserver.xrandrHeads = [ "HDMI1" "HDMI2" ];
+    services = {
+      xserver = {
+        videoDrivers = [ "intel" ];
+        xrandrHeads = [ "HDMI1" "HDMI2" ];
+      };
+      printing = {
+        enable = true;
+        drivers = [ pkgs.gutenprint ];
+        webInterface = true;
+      };
+    };
 
     system = {
         stateVersion = "20.09";
