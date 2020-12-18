@@ -1,7 +1,7 @@
 { pkgs }:
 
 pkgs.writeShellScriptBin "dmenu-scrot" ''
-  imageFolder=/home/hendrik/images/scrots
+  imageFolder=${HOME}/Images/Scrots
   cmdOptions="
     Fullscreen
     Section
@@ -11,7 +11,7 @@ pkgs.writeShellScriptBin "dmenu-scrot" ''
     Section uploaded
   "
 
-  cmd=$(${pkgs.dmenu}/bin/dmenu -l 10 -p "Screenshot:" <<< "$cmdOptions")
+  cmd=$(${pkgs.dmenu}/bin/dmenu -l 10 -p 'Screenshot:' <<< "$cmdOptions")
   filename='%Y-%m-%d-@%H-%M-%S-scrot.png'
 
   case ${cmd%% *} in

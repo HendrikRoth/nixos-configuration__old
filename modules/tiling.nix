@@ -3,10 +3,11 @@
 {
     imports = [
       ../programs/dmenu
-      ../programs/st
+      #../programs/st
     ];
 
     environment.systemPackages = with pkgs; [
+        alacritty
         dunst
         picom
         materia-theme
@@ -29,10 +30,11 @@
           in
             ''cp ${configFile} config.def.h'';
         }))
-        st
+        #st
         xsel
         libnotify
         (callPackage ../programs/onlineip {})
+        (callPackage ../programs/clipped-scrot {})
         (callPackage ../programs/dmenu-calc {})
         (callPackage ../programs/dmenu-mail {})
         (callPackage ../programs/dmenu-power {})
@@ -54,7 +56,7 @@
             enable = true;
             fade = true;
             shadow = true;
-            fadeDelta = 2;
+            fadeDelta = 1;
         };
     };
 }

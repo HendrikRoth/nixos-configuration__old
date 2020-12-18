@@ -21,6 +21,11 @@
 
     environment.systemPackages = with pkgs; [
         chromium
+        (nur.repos.pn.dwmblocks.overrideAttrs (oldAttrs: {
+          patches = [
+            ../../programs/dwmblocks/1.diff
+          ];
+        }))
     ];
 
     boot.loader = {

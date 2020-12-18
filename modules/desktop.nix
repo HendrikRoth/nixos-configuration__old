@@ -32,7 +32,9 @@
         feh
         xflux
         xclip
+        xdotool
         scrot
+        autocutsel
 
         # utils
         udiskie

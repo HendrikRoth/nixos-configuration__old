@@ -68,6 +68,8 @@
         fira-code
         fira-code-symbols
         corefonts
+        font-awesome
+        siji
     ];
 
     hardware.bluetooth.enable = true;

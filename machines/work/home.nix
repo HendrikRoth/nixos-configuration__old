@@ -83,10 +83,16 @@ in
         enableAutosuggestions = true;
         autocd = true;
         defaultKeymap = "viins";
-        oh-my-zsh = {
-            enable = true;
-            theme = "robbyrussell";
-            plugins = [ "git" "sudo" "tmux" "thefuck" "extract" "docker" ];
+        prezto = {
+          enable = true;
+          prompt = {
+            theme = "pure";
+          };
+          #tmux = {
+          #  autoStartLocal = true;
+          #  autoStartRemote = true;
+          #};
+          pmodules = [ "git" "tmux" "docker" "prompt" ];
         };
         shellAliases = {
           n = "nnn";
@@ -98,6 +104,33 @@ in
           cat = "bat --paging=never";
           less = "bat --paging=always --style='changes --color=always";
           tree = "exa --tree --color=always";
+        };
+      };
+      alacritty = {
+        enable = true;
+        settings = {
+          window = {
+            padding = {
+              x = 5;
+              y = 5;
+            };
+          };
+          colors = {
+            primary = {
+              background = "#ffffff";
+              foreground = "#000000";
+            };
+            normal = {
+              black = "#696c77";
+              red = "#e45649";
+              green = "#50a14f";
+              yellow = "#c18401";
+              blue = "#4078f2";
+              magenta = "#a626a4";
+              cyan = "#0184bc";
+              white = "#a0a1a7";
+            };
+          };
         };
       };
     };
@@ -116,13 +149,19 @@ in
       enable = true;
       windowManager.command = "dbus-run-session -- dwm";
       profileExtra = ''
-        # xrdb $\{XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
+        xrdb $\{XDG_CONFIG_HOME:-$HOME/.config}/Xresources &
+        dwmblocks &
+        autocutsel &
         dunst &
         udiskie &
         pgrep xflux || xflux -l 43.36 -g 1.26 &
         xset r rate 300 500 & 
         $HOME/.fehbg &
+        VBoxManage startvm "Windows 10" &
+        firefox &
+        franz &
+        surf https://www.notion.so/Pagisto-348782a7d5194a0187cba66689499e05 &
+        surf https://ticket.pagisto.com/projects/config1/issues &
       '';
-      #scriptPath = ".xinitrc";
     };
 }

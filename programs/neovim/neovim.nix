@@ -62,7 +62,7 @@ in
                 syntax on
                 set background=light
                 set backspace=indent,eol,start
-                set cmdheight=2
+                set cmdheight=1
                 set colorcolumn=80
                 set clipboard+=unnamedplus
                 set encoding=UTF-8
