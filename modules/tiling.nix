@@ -13,26 +13,11 @@
         materia-theme
         dmenu
         surf
-        (dwm.overrideAttrs (oldAttrs: {
-          patches = [
-            ../programs/dwm/1-pertag.diff
-            ../programs/dwm/2-scratchpad.diff
-            ../programs/dwm/3-combo.diff
-            ../programs/dwm/4-centretitle.diff
-            ../programs/dwm/5-sticky.diff
-            ../programs/dwm/6-deck.diff
-            ../programs/dwm/7-columns.diff
-            ../programs/dwm/8-xresources.diff
-            ../programs/dwm/9-alpha.diff
-          ];
-          postPatch = let
-            configFile = pkgs.writeText "config.def.h" (builtins.readFile ../programs/dwm/config.h);
-          in
-            ''cp ${configFile} config.def.h'';
-        }))
-        #st
+        sxhkd
         xsel
         libnotify
+        scrot
+        imgurbash2
         (callPackage ../programs/onlineip {})
         (callPackage ../programs/clipped-scrot {})
         (callPackage ../programs/dmenu-calc {})
@@ -45,18 +30,14 @@
         (callPackage ../programs/dmenu-wallpaper {})
         (callPackage ../programs/dmenu-web-search {})
         (callPackage ../programs/dmenu-man-search {})
+        (callPackage ../programs/pulseaudio-switch {})
+        (callPackage ../programs/pulseaudio-sink {})
     ];
 
     services = {
         xserver = {
-            displayManager.defaultSession = "none+dwm";
-            windowManager.dwm.enable = true;
-        };
-        picom = {
-            enable = true;
-            fade = true;
-            shadow = true;
-            fadeDelta = 1;
+            displayManager.defaultSession = "none+bspwm";
+            windowManager.bspwm.enable = true;
         };
     };
 }

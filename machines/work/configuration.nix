@@ -1,17 +1,5 @@
 { config, pkgs, ...}:
 {
-#    nix.extraOptions = ''
-#        plugin-files = ${pkgs.nix-plugins_4.override { nix = config.nix.package; }}/lib/nix/plugins/libnix-extra-builtins.so
-#    '';
-
-    #deployment.keys.secrets.text = builtins.extraBuiltins.pass "secrets";
-
-    nixpkgs.config.packageOverrides = pkgs: {
-      nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-        inherit pkgs;
-      };
-    };
-
     imports = [
         ./hardware-configuration.nix
         ../../modules/common.nix
@@ -21,11 +9,6 @@
 
     environment.systemPackages = with pkgs; [
         chromium
-        (nur.repos.pn.dwmblocks.overrideAttrs (oldAttrs: {
-          patches = [
-            ../../programs/dwmblocks/1.diff
-          ];
-        }))
     ];
 
     boot.loader = {

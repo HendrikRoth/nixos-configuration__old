@@ -45,6 +45,16 @@
 
         # misc
         anydesk
+        xorg.xfd
+    ];
+
+    fonts.fonts = with pkgs; [
+        noto-fonts
+        fira-code
+        fira-code-symbols
+        corefonts
+        font-awesome
+        siji
     ];
 
     programs.tmux = {

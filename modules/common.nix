@@ -63,15 +63,6 @@
         dconf
     ];
 
-    fonts.fonts = with pkgs; [
-        noto-fonts
-        fira-code
-        fira-code-symbols
-        corefonts
-        font-awesome
-        siji
-    ];
-
     hardware.bluetooth.enable = true;
 
     nixpkgs.config.allowUnfree = true;
