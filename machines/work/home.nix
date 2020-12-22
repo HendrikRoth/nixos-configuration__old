@@ -197,7 +197,7 @@ in
           # wm independent
           "super + Return" = "alacritty"; # term
           "super + p" = "dmenu_run"; # launcher
-          "super + shift + s" = "clipped-scrot";
+          "super + shift + s" = "/run/current-system/sw/bin/clipped-scrot";
           # bspwm
           "super + {_, shift + }w" = "bspc node -{c, k}"; # close and kill
           "super + m" = "bspc desktop -l next"; # alternate between tiled and monocle layout
@@ -223,11 +223,19 @@ in
           "bar/top" = {
             monitor = "\${env:MONITOR:HDMI1}";
             width = "100%";
-            height = "3%";
+            height = "32";
             radius = 0;
-            font-2 = "Siji:pixelsize=12;2";
+            font-0 = "Fira Code:pixelsize=8;3";
+            font-1 = "Noto Sans:pixelsize=8;0";
+            font-2 = "Siji:pixelsize=14;2";
+            module-margin-left = 0;
+            module-margin-right = 0;
+            overline-size = 6;
+            underline-size = 6;
+            overline-color = "#000000";
+            underline-color = "#000000";
             modules-left = "bspwm";
-            modules-center = "";
+            modules-center = "window";
             modules-right = "sink volume date";
             scroll-up = "#bspwm.prev";
             scroll-down = "#bspwm.next";
@@ -239,10 +247,14 @@ in
             enable-click = true;
             enable-scroll = true;
             reverse-scroll = false;
-            format-background = "#666666";
-            format-foreground = "#FFFFFF";
+            format-background = "#333333";
+            format-foreground = "#999999";
+            format-overline = "#000000";
+            format-underline = "#000000";
             format-margin = 1;
             format-padding = 2;
+            label-dimmed-foreground = "#999999";
+            label-dimmed-focused-foreground = "#FFFFFF";
           };
 
           "module/date" = {
@@ -251,8 +263,20 @@ in
             date = "%Y/%m/%d";
             time = "%H:%M";
             label = "%time% %date%";
-            format-background = "#666666";
-            format-foreground = "#FFFFFF";
+            format-background = "#333333";
+            format-foreground = "#999999";
+            format-overline = "#000000";
+            format-underline = "#000000";
+            format-margin = 1;
+            format-padding = 2;
+          };
+
+          "module/window" = {
+            type = "internal/xwindow";
+            format-background = "#333333";
+            format-foreground = "#999999";
+            format-overline = "#000000";
+            format-underline = "#000000";
             format-margin = 1;
             format-padding = 2;
           };
@@ -261,17 +285,31 @@ in
             type = "internal/pulseaudio";
             use-ui-max = true;
             interval = 5;
-            format-background = "#666666";
-            format-foreground = "#FFFFFF";
-            format-margin = 1;
-            format-padding = 2;
+            format-volume-background = "#333333";
+            format-volume-foreground = "#999999";
+            format-volume-overline = "#000000";
+            format-volume-underline = "#000000";
+            format-volume-margin = 1;
+            format-volume-padding = 2;
+            format-muted-background = "#333333";
+            format-muted-foreground = "#999999";
+            format-muted-overline = "#000000";
+            format-muted-underline = "#000000";
+            format-muted-margin = 1;
+            format-muted-padding = 2;
           };
 
           "module/sink" = {
             type = "custom/script";
             exec = "/run/current-system/sw/bin/pulseaudio-sink";
             click-left = "/run/current-system/sw/bin/pulseaudio-switch";
-            interval = 5;
+            interval = 1;
+            format-background = "#333333";
+            format-foreground = "#999999";
+            format-overline = "#000000";
+            format-underline = "#000000";
+            format-margin = 1;
+            format-padding = 2;
           };
         };
       };
@@ -286,10 +324,10 @@ in
         settings = {
           global = {
             monitor = 0;
-            geometry = "300x5-30+50";
+            geometry = "300x5-30+150";
             transparency = 10;
             frame_color = "#000000";
-            font = "Droid Sans 9";
+            font = "Noto Sans 6";
           };
           urgency_normal = {
             background = "#000000";
@@ -297,6 +335,18 @@ in
             timeout = 10;
           };
         };
+      };
+    };
+
+    gtk = {
+      enable = true;
+      iconTheme = {
+        package = pkgs.ant-theme;
+        name = "Ant";
+      };
+      theme = {
+        package = pkgs.ant-theme;
+        name = "Ant";
       };
     };
 }

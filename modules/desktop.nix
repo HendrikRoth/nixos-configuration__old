@@ -21,7 +21,7 @@
 
         # media
         mpv
-        spotify-tui
+        spotify
         playerctl
         ncpamixer
 

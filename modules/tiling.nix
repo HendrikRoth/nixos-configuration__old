@@ -18,6 +18,7 @@
         libnotify
         scrot
         imgurbash2
+        zscroll
         (callPackage ../programs/onlineip {})
         (callPackage ../programs/clipped-scrot {})
         (callPackage ../programs/dmenu-calc {})
@@ -32,6 +33,8 @@
         (callPackage ../programs/dmenu-man-search {})
         (callPackage ../programs/pulseaudio-switch {})
         (callPackage ../programs/pulseaudio-sink {})
+        (callPackage ../programs/spotify-status {})
+        (callPackage ../programs/spotify-scroll {})
     ];
 
     services = {
