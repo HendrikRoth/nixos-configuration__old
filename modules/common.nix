@@ -5,6 +5,7 @@
         # shell
         zsh
         tmux
+        tmuxinator
         thefuck
         bat
         exa

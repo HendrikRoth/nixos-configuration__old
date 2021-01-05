@@ -5,6 +5,7 @@
         ../../modules/common.nix
         ../../modules/desktop.nix
         ../../modules/tiling.nix
+        ../../modules/nodejs.nix
     ];
 
     environment.systemPackages = with pkgs; [

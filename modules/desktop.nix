@@ -9,6 +9,7 @@
         # cad
         blender
         freecad
+        kicad
 
         # productivity
         zathura

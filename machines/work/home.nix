@@ -155,9 +155,6 @@ in
             HDMI1 = [ "1" "2" "3" "4" "5" ];
             HDMI2 = [ "6" "7" "8" "9" "0" ];
           };
-          extraConfig = ''
-            bspc config border_width = 2
-          '';
           rules = {
             "Vim" = { desktop = "^2"; };
             "Enpass" = { desktop = "^3"; };
@@ -170,6 +167,16 @@ in
             "Notion" = { desktop = "^9"; };
             "Firefox" = { desktop = "^10"; };
           };
+          extraConfig = ''
+            bspc config border_width 2
+            bspc config window_gap 20
+            bspc config borderless_monocle true
+            bspc config gapless_monocle true
+            bspc config single_monocle true
+            bspc desktop 0 -l monocle
+            bspc config normal_border_color "#000000"
+            bspc config focused_border_color "#50a14f"
+          '';
         };
       };
       profileExtra = ''
@@ -180,7 +187,7 @@ in
         pgrep xflux || xflux -l 43.36 -g 1.26 &
         xset r rate 300 500 & 
         $HOME/.fehbg &
-        alacritty &
+        alacritty --class Vim -e vim &
         surf https://www.notion.so/Pagisto-348782a7d5194a0187cba66689499e05 &
         surf https://ticket.pagisto.com/projects/config1/issues &
         firefox &
@@ -198,6 +205,7 @@ in
           "super + Return" = "alacritty"; # term
           "super + p" = "dmenu_run"; # launcher
           "super + shift + s" = "/run/current-system/sw/bin/clipped-scrot";
+          "super + v" = "alacritty --class Vim -e vim";
           # bspwm
           "super + {_, shift + }w" = "bspc node -{c, k}"; # close and kill
           "super + m" = "bspc desktop -l next"; # alternate between tiled and monocle layout
